@@ -1,1 +1,1 @@
-docker build -t cuda-ros:11.6-melodic  .
+docker build -t <image name>:<image tag>  .
