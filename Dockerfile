@@ -2,7 +2,7 @@
 ## See "Overview of Images" at https://hub.docker.com/r/nvidia/cuda for differences between image types (base, runtime, devel).
 ## Search available images at https://hub.docker.com/r/nvidia/cuda/tags
 
-FROM nvidia/cuda:11.6.2-runtime-ubuntu18.04
+FROM nvidia/cuda:11.6.2-runtime-ubuntu20.04
 
 SHELL ["/bin/bash", "-c"]
 
@@ -28,24 +28,24 @@ RUN curl -s https://raw.githubusercontent.com/ros/rosdistro/master/ros.asc | apt
 ## Select one install version. Ensure ROS version is compatible with ubuntu version
 ## ROS, rqt, rviz, robot-generic libraries, 2D/3D simulators and 2D/3D perception
 # RUN apt-get update && apt-get install -y \
-    # ros-melodic-desktop-full
+    # ros-noetic-desktop-full
 ## ROS, rqt, rviz, robot-generic libraries
 RUN apt-get update && apt-get install -y \
-    ros-melodic-desktop
+    ros-noetic-desktop
 ## no GUI tools
 # RUN apt-get update && apt-get install -y \
-    # ros-melodic-ros-base
+    # ros-noetic-ros-base
 
 # Setup ROS environment
-RUN echo "source /opt/ros/melodic/setup.bash" >> ~/.bashrc
+RUN echo "source /opt/ros/noetic/setup.bash" >> ~/.bashrc
 
 # Install dependencies
 ## Amend accordingly based on requirement
 RUN apt-get install -y \
-    python-rosdep \
-    python-rosinstall \
-    python-rosinstall-generator \
-    python-wstool \
+    python3-rosdep \
+    python3-rosinstall \
+    python3-rosinstall-generator \
+    python3-wstool \
     build-essential \
 && rm -rf /var/lib/apt/lists/*
 
